@@ -1,9 +1,9 @@
 'use strict';
 
 const express = require('express');
+const app = express();
 
 const port = 3000;
-const app = express();
 
 app.listen(port, () => {
     console.info(`API server started on PORT: ${port}`);
