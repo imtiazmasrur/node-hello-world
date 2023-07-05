@@ -19,6 +19,19 @@ spec:
           #   imagePullPolicy: Always # See: (Image pull policy options) https://www.airplane.dev/blog/kubernetes-image-pull-policy
           ports:
             - containerPort: 3000
+          env:
+            - name: DB_DIALECT
+              value: postgres
+            - name: DB_HOST
+              value: 0.0.0.0
+            - name: DB_PORT
+              value: 5432
+            - name: DB_USER
+              value:
+            - name: DB_DATABASE
+              value:
+            - name: DB_PASSWORD
+              value:
 
 ---
 apiVersion: v1

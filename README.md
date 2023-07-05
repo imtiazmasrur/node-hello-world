@@ -25,6 +25,11 @@ Nodejs, Docker, Kubernetes
 - To see all your named namespace (everything) `kubectl get all -n developers-space`
 - After any update apply on deployment.yaml file `kubectl apply -f deployment.yaml`
 
+### Create Secret on Kubernetes
+- N.B. - Secret must be created before `Deployment`
+- To create base64 password `echo -n 'password' | base64` // Output: `bXlfZGF0YWJhc2U=`
+- To apply secret `kubectl apply -f secret.yaml`
+
 ### Pod Debugging commands on Kubernetes
 - To see your namespace's pods `kubectl get pods -n developers-space`
 - Get pod info (pod name - `"node-hello-world-6f455d9c5c-758fs"`) `kubectl describe pod node-hello-world-6f455d9c5c-758fs -n developers-space`
@@ -43,4 +48,3 @@ Nodejs, Docker, Kubernetes
 
 ### Service Debugging Commands on Kubernetes
 - Get service info (service name - `"node-hello-world"`) `kubectl describe service node-hello-world -n developers-space`
-- 
