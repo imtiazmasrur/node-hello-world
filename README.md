@@ -23,16 +23,19 @@ Nodejs, Docker, Kubernetes
 - To see all namespace (everything) `kubectl get all -A`
 - OR
 - To see all your named namespace (everything) `kubectl get all -n developers-space`
+- To find anything `kubectl get all -n developers-space | grep node-hello-world`
 - After any update apply on deployment.yaml file `kubectl apply -f deployment.yaml`
 
 ### Create Secret on Kubernetes
 - N.B. - Secret must be created before `Deployment`
 - To create base64 password `echo -n 'password' | base64` // Output: `bXlfZGF0YWJhc2U=`
 - To apply secret `kubectl apply -f secret.yaml`
+- Get secret `kubectl get secret -n developers-space`
 
 ### Pod Debugging commands on Kubernetes
 - To see your namespace's pods `kubectl get pods -n developers-space`
-- Get pod info (pod name - `"node-hello-world-6f455d9c5c-758fs"`) `kubectl describe pod node-hello-world-6f455d9c5c-758fs -n developers-space`
+- Get pod details info of a pod (pod name - `"node-hello-world-6f455d9c5c-758fs"`) `kubectl describe pod node-hello-world-6f455d9c5c-758fs -n developers-space`
+- To watch pod - `kubectl get pod --watch -n developers-space`
 - Further details of pods (Ex. - details with ip) - `kubectl get pod -o wide -n developers-space`
 - To see the logs/consoles of pod (pod name - `"node-hello-world-6f455d9c5c-758fs"`) `kubectl logs node-hello-world-6f455d9c5c-758fs -n developers-space`
 - Enter pod console (pod name - `"node-hello-world-6f455d9c5c-758fs"`) `kubectl exec -it node-hello-world-6f455d9c5c-758fs -n developers-space sh`

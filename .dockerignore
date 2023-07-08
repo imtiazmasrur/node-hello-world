@@ -3,6 +3,7 @@ logs/
 .git
 *.md
 .cache
+.env
 
 .DS_Store
 Thumbs.db

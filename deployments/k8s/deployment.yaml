@@ -16,23 +16,31 @@ spec:
       containers:
         - name: node-hello-world
           image: imtiazmasrur/node-hello-world:latest # image we have pushed to
-          #   imagePullPolicy: Always # See: (Image pull policy options) https://www.airplane.dev/blog/kubernetes-image-pull-policy
+          imagePullPolicy: Always # See: (Image pull policy options) https://www.airplane.dev/blog/kubernetes-image-pull-policy
           ports:
             - containerPort: 3000
           env:
             - name: DB_DIALECT
-              value: postgres
+              value: ttttt
             - name: DB_HOST
               value: 0.0.0.0
             - name: DB_PORT
-              value: 5432
+              value: "5432"
             - name: DB_USER
-              value:
+              valueFrom:
+                secretKeyRef:
+                  name: node-hello-world-secret
+                  key: db-user
             - name: DB_DATABASE
-              value:
+              valueFrom:
+                secretKeyRef:
+                  name: node-hello-world-secret
+                  key: db-database
             - name: DB_PASSWORD
-              value:
-
+              valueFrom:
+                secretKeyRef:
+                  name: node-hello-world-secret
+                  key: db-password
 ---
 apiVersion: v1
 kind: Service
@@ -43,6 +51,8 @@ spec:
   selector:
     app: node-hello-world
   ports:
-    - port: 3000
+    - protocol: TCP
+      port: 3000
       targetPort: 3000
+      nodePort: 30000
   type: LoadBalancer
