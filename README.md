@@ -25,6 +25,7 @@ Nodejs, Docker, Kubernetes
 - To see all your named namespace (everything) `kubectl get all -n developers-space`
 - To find anything `kubectl get all -n developers-space | grep node-hello-world`
 - After any update apply on deployment.yaml file `kubectl apply -f deployment.yaml`
+- Restart pod `kubectl rollout restart deployment node-hello-world -n developers-space`
 
 ### Create Secret on Kubernetes
 - N.B. - Secret must be created before `Deployment`
