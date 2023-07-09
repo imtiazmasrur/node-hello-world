@@ -1,6 +1,6 @@
 # node-hello-world with docker and kubernetes deployment
 
-Nodejs, Docker, Kubernetes
+Nodejs, Docker, Kubernetes, Ubuntu Server
 
 ## Kubernetes
 
@@ -31,6 +31,7 @@ Nodejs, Docker, Kubernetes
 - N.B. - Secret must be created before `Deployment`
 - To create base64 password `echo -n 'password' | base64` // Output: `bXlfZGF0YWJhc2U=`
 - To apply secret `kubectl apply -f secret.yaml`
+- To apply secret to specific namespace `kubectl apply -f secret.yaml --namespace=developers-space`
 - Get secret `kubectl get secret -n developers-space`
 
 ### Pod Debugging commands on Kubernetes
@@ -52,3 +53,24 @@ Nodejs, Docker, Kubernetes
 
 ### Service Debugging Commands on Kubernetes
 - Get service info (service name - `"node-hello-world"`) `kubectl describe service node-hello-world -n developers-space`
+- Open service on browser URL - `minikube service node-hello-world -n developers-space`
+- Get service URl - `minikube service node-hello-world -n developers-space --url`
+
+### Some Commands on Kubernetes
+- Get the Cluster State `kubectl cluster-info`
+- Get The Cluster Information `kubectl config view`
+- See all available API resources which are not attached to the namespace `kubectl api-resources --namespaced=false`
+- See all available API resources which are attached to the namespace `kubectl api-resources --namespaced=true`
+
+### kubectx and kubens commands
+- Now we do not want to put `namespace` name each time to run namespace command.
+- So that we will install `kubectx`
+- To install `sudo apt install kubectx`
+- If not install in ubuntu try below commands
+    - `sudo git clone https://github.com/ahmetb/kubectx /usr/local/kubectx`
+    - `sudo ln -s /usr/local/kubectx/kubectx /usr/local/bin/kubectx`
+    - `sudo ln -s /usr/local/kubectx/kubens /usr/local/bin/kubens`
+    - `sudo ln -s /usr/local/kubectx/completion/kubectx.zsh /usr/local/share/zsh/site-functions/_kubectx.zsh`
+    - `sudo ln -s /usr/local/kubectx/completion/kubens.zsh /usr/local/share/zsh/site-functions/_kubens.zsh`
+- To see all namespaces `kubens`
+- Switch to any namespace `kubens developers-space`

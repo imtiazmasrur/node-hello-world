@@ -21,7 +21,7 @@ spec:
             - containerPort: 3000
           env:
             - name: DB_DIALECT
-              value: ttttt
+              value: postgres
             - name: DB_HOST
               value: 0.0.0.0
             - name: DB_PORT
