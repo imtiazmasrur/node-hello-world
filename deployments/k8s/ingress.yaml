@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: node-server-ingress
+  namespace: developers-space
+  labels:
+    name: node-server-ingress
+spec:
+  rules:
+    - host: nodehelloworld.com
+      http:
+        paths:
+          - pathType: Prefix
+            path: "/"
+            backend:
+              service:
+                name: node-hello-world
+                port:
+                  number: 3000

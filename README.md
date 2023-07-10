@@ -17,7 +17,14 @@ Nodejs, Docker, Kubernetes, Ubuntu Server
 - Run `kubectl apply -f namespace.yml`
 - To see all namespace `kubectl get namespace`
 
-### Create Deployment on Kubernetes
+### Create Secret on Kubernetes
+- N.B. - Secret must be created before `Deployment`
+- To create base64 password `echo -n 'password' | base64` // Output: `bXlfZGF0YWJhc2U=`
+- To apply secret `kubectl apply -f secret.yaml`
+- To apply secret to specific namespace `kubectl apply -f secret.yaml --namespace=developers-space`
+- Get secret `kubectl get secret -n developers-space`
+
+### Create Deployment/Pod on Kubernetes
 - To see default namespace (everything) `kubectl get all`
 - OR
 - To see all namespace (everything) `kubectl get all -A`
@@ -26,13 +33,7 @@ Nodejs, Docker, Kubernetes, Ubuntu Server
 - To find anything `kubectl get all -n developers-space | grep node-hello-world`
 - After any update apply on deployment.yaml file `kubectl apply -f deployment.yaml`
 - Restart pod `kubectl rollout restart deployment node-hello-world -n developers-space`
-
-### Create Secret on Kubernetes
-- N.B. - Secret must be created before `Deployment`
-- To create base64 password `echo -n 'password' | base64` // Output: `bXlfZGF0YWJhc2U=`
-- To apply secret `kubectl apply -f secret.yaml`
-- To apply secret to specific namespace `kubectl apply -f secret.yaml --namespace=developers-space`
-- Get secret `kubectl get secret -n developers-space`
+- Stop a single deployment/pod `kubectl -n developers-space scale deployment node-hello-world --replicas 0`
 
 ### Pod Debugging commands on Kubernetes
 - To see your namespace's pods `kubectl get pods -n developers-space`
@@ -44,6 +45,7 @@ Nodejs, Docker, Kubernetes, Ubuntu Server
 
 ### Deployment Debugging Commands on Kubernetes
 - Create deployment from [DockerHub](https://hub.docker.com) (image name - `"nginx"`) `kubectl create deployment nginx-deployment --image=nginx -n developers-space`
+- Get all deployments `kubectl get deployment -n developers-space`
 - To edit deployments (deployment name - `"node-hello-world"`) `kubectl edit deployment node-hello-world -n developers-space`
 - Delete deployment (deployment name - `"node-hello-world"`) `kubectl delete deployment node-hello-world -n developers-space`
 - OR
@@ -55,12 +57,18 @@ Nodejs, Docker, Kubernetes, Ubuntu Server
 - Get service info (service name - `"node-hello-world"`) `kubectl describe service node-hello-world -n developers-space`
 - Open service on browser URL - `minikube service node-hello-world -n developers-space`
 - Get service URl - `minikube service node-hello-world -n developers-space --url`
+- Get all replicaset `kubectl get replicaset -n developers-space`
 
 ### Some Commands on Kubernetes
 - Get the Cluster State `kubectl cluster-info`
 - Get The Cluster Information `kubectl config view`
 - See all available API resources which are not attached to the namespace `kubectl api-resources --namespaced=false`
 - See all available API resources which are attached to the namespace `kubectl api-resources --namespaced=true`
+- Stop all deployments/pods `kubectl -n developers-space scale deployment $(kubectl -n developers-space get deployment | awk '{print $1}') --replicas 0`
+- To stop all Kubernetes stateful sets `kubectl -n developers-space scale statefulset --replicas 0 $(kubectl -n developers-space get statefulset  | awk '{print $1}')`
+- Delete All Resources `kubectl delete all --all -n developers-space`
+- To see minikube dashboard `minikube dashboard`
+- `minikube dashboard --url`
 
 ### kubectx and kubens commands
 - Now we do not want to put `namespace` name each time to run namespace command.
@@ -74,3 +82,9 @@ Nodejs, Docker, Kubernetes, Ubuntu Server
     - `sudo ln -s /usr/local/kubectx/completion/kubens.zsh /usr/local/share/zsh/site-functions/_kubens.zsh`
 - To see all namespaces `kubens`
 - Switch to any namespace `kubens developers-space`
+
+### Ingress on Kubernetes
+- Enable Ingress on minikube `minikube addons enable ingress`
+- Check OR See, is ingress running `kubectl get pod -n kube-system` 
+- `kubectl apply -f ingress.yaml -n developers-space`
+- See all ingress `kubectl get ingress`
