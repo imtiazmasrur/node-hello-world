@@ -16,4 +16,4 @@ spec:
               service:
                 name: node-hello-world
                 port:
-                  number: 3000
+                  number: 3000 # this will be the service port of `node-hello-world` (See line 55 of deployment.yaml)
