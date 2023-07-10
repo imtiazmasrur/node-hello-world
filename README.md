@@ -15,7 +15,7 @@ Nodejs, Docker, Kubernetes, Ubuntu Server
 - Create a namespace `kubectl create namespace developers-space`
 - OR
 - Run `kubectl apply -f namespace.yml`
-- To see all namespace `kubectl get namespace`
+- To see all namespace `kubectl get namespace` | `kubectl get ns`
 
 ### Create Secret on Kubernetes
 - N.B. - Secret must be created before `Deployment`
@@ -55,9 +55,10 @@ Nodejs, Docker, Kubernetes, Ubuntu Server
 
 ### Service Debugging Commands on Kubernetes
 - Get service info (service name - `"node-hello-world"`) `kubectl describe service node-hello-world -n developers-space`
+- Get all services `kubectl get svc`
 - Open service on browser URL - `minikube service node-hello-world -n developers-space`
 - Get service URl - `minikube service node-hello-world -n developers-space --url`
-- Get all replicaset `kubectl get replicaset -n developers-space`
+- Get all replicaset `kubectl get replicaset -n developers-space` | `kubectl get rs`
 
 ### Some Commands on Kubernetes
 - Get the Cluster State `kubectl cluster-info`
@@ -92,3 +93,6 @@ Nodejs, Docker, Kubernetes, Ubuntu Server
 - You will see IP address of ingress
 - Run `sudo nano /etc/hosts`
 - Add line (not this IP wat you will see on your console) `192.168.49.2	nodehelloworld.com` to your host file
+
+### HELM
+- Helm hub [artifacthub.io](https://artifacthub.io)
