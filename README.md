@@ -88,3 +88,7 @@ Nodejs, Docker, Kubernetes, Ubuntu Server
 - Check OR See, is ingress running `kubectl get pod -n kube-system` 
 - `kubectl apply -f ingress.yaml -n developers-space`
 - See all ingress `kubectl get ingress`
+- See more details of ingress `kubectl describe ingress node-server-ingress`
+- You will see IP address of ingress
+- Run `sudo nano /etc/hosts`
+- Add line (not this IP wat you will see on your console) `192.168.49.2	nodehelloworld.com` to your host file

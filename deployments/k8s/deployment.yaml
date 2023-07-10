@@ -53,6 +53,6 @@ spec:
   ports:
     - protocol: TCP
       port: 3000
-      targetPort: 3000
-      nodePort: 30000
-  type: LoadBalancer
+      targetPort: 3000 # this port should match the deployment's containerPort (See line 21)
+      nodePort: 30000 # By nodePort, and can browse by IP address and port. Port range (30000 - 32767)
+  type: LoadBalancer # For external service we should use type as `LoadBalancer` and alse `nodePort`
