@@ -49,10 +49,10 @@ metadata:
   namespace: developers-space
 spec:
   selector:
-    app: node-hello-world
+    app: node-hello-world # This should match with Deployment selector.matchLabels.app (See line 10).
   ports:
     - protocol: TCP
       port: 3000 # Service will run on this port.
       targetPort: 3000 # this port should match the deployment's containerPort (See line 21).
       nodePort: 30000 # By nodePort, we can browse our app by IP address and port. Port range (30000 - 32767). Run `minikube service node-hello-world -n developers-space --url` to see the service URL.
-  type: LoadBalancer # For external service we should use type as `LoadBalancer` and alse `nodePort`.
+  type: LoadBalancer # For external service we should use type as `LoadBalancer` and alse `nodePort`. For internal this will be `ClusterIP`.

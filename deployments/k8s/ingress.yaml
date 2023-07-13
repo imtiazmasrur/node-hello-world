@@ -7,8 +7,7 @@ metadata:
     name: node-server-ingress
 spec:
   rules:
-    - host: nodehelloworld.com
-      http:
+    - http:
         paths:
           - path: "/"
             pathType: Prefix
@@ -17,3 +16,24 @@ spec:
                 name: node-hello-world
                 port:
                   number: 3000 # this will be the service port of `node-hello-world` (See line 55 of deployment.yaml)
+
+# ---
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: node-server-ingress
+#   namespace: developers-space
+#   labels:
+#     name: node-server-ingress
+# spec:
+#   rules:
+#     - host: nodehelloworld.com
+#       http:
+#         paths:
+#           - path: "/"
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: node-hello-world
+#                 port:
+#                   number: 3000 # this will be the service port of `node-hello-world` (See line 55 of deployment.yaml)
