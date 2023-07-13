@@ -16,7 +16,7 @@ spec:
       containers:
         - name: node-hello-world
           image: imtiazmasrur/node-hello-world:latest # image we have pushed to
-          imagePullPolicy: Always # See: (Image pull policy options) https://www.airplane.dev/blog/kubernetes-image-pull-policy
+          imagePullPolicy: IfNotPresent # See: (Image pull policy options) https://www.airplane.dev/blog/kubernetes-image-pull-policy
           ports:
             - containerPort: 3000
           env:

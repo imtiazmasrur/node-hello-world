@@ -30,10 +30,12 @@ Nodejs, Docker, Kubernetes, Ubuntu Server
 - To see all namespace (everything) `kubectl get all -A`
 - OR
 - To see all your named namespace (everything) `kubectl get all -n developers-space`
+- To see only deployment `kubectl get deploy`
 - To find anything `kubectl get all -n developers-space | grep node-hello-world`
 - After any update apply on deployment.yaml file `kubectl apply -f deployment.yaml`
 - Restart pod `kubectl rollout restart deployment node-hello-world -n developers-space`
 - Stop a single deployment/pod `kubectl -n developers-space scale deployment node-hello-world --replicas 0`
+- Delete a deployment `kubectl delete deploy node-hello-world`
 
 ### Pod Debugging commands on Kubernetes
 - To see your namespace's pods `kubectl get pods -n developers-space`
@@ -59,6 +61,7 @@ Nodejs, Docker, Kubernetes, Ubuntu Server
 - Open service on browser URL - `minikube service node-hello-world -n developers-space`
 - Get service URl - `minikube service node-hello-world -n developers-space --url`
 - Get all replicaset `kubectl get replicaset -n developers-space` | `kubectl get rs`
+- To delete service `kubectl delete services node-hello-world`
 
 ### Some Commands on Kubernetes
 - Get the Cluster State `kubectl cluster-info`
@@ -67,9 +70,10 @@ Nodejs, Docker, Kubernetes, Ubuntu Server
 - See all available API resources which are attached to the namespace `kubectl api-resources --namespaced=true`
 - Stop all deployments/pods `kubectl -n developers-space scale deployment $(kubectl -n developers-space get deployment | awk '{print $1}') --replicas 0`
 - To stop all Kubernetes stateful sets `kubectl -n developers-space scale statefulset --replicas 0 $(kubectl -n developers-space get statefulset  | awk '{print $1}')`
-- Delete All Resources `kubectl delete all --all -n developers-space`
+- Delete all from kubernetes `kubectl delete all --all`
+- Delete All Resources from namespace `kubectl delete all --all -n developers-space`
 - To see minikube dashboard `minikube dashboard`
-- `minikube dashboard --url`
+- To get minikube dashboard `minikube dashboard --url`
 
 ### kubectx and kubens commands
 - Now we do not want to put `namespace` name each time to run namespace command.
@@ -96,3 +100,14 @@ Nodejs, Docker, Kubernetes, Ubuntu Server
 
 ### HELM
 - Helm hub [artifacthub.io](https://artifacthub.io)
+- To run (Example command) - `helm install <full name override> <chart name>/ --values <chart name>/values.yaml`
+- Run this `helm install node-hello-world node-hello-world-chart/ --values node-hello-world-chart/values.yaml`
+- Helm uninstall (remove all helm resources) `helm uninstall node-hello-world`
+
+### References
+- Kubernetes cheatsheet - https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+- Helm hub - https://artifacthub.io
+- Docker Hub - https://hub.docker.com
+- Understand Kubernetes https://www.linkedin.com/pulse/kubernetes-from-z-dr-rabi-prasad-padhy-
+- Image pull policy - https://www.airplane.dev/blog/kubernetes-image-pull-policy
+- Create Helm Chart https://phoenixnap.com/kb/create-helm-chart
