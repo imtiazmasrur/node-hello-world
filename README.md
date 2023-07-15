@@ -1,8 +1,6 @@
-# node-hello-world with docker and kubernetes deployment
+# node-hello-world with docker, kubernetes, helm deployment
 
-Nodejs, Docker, Kubernetes, Ubuntu Server
-
-## Kubernetes
+Nodejs, Docker, Kubernetes, Helm, Ubuntu Server
 
 ### Docker Image
 - Docker image [node-hello-world](https://hub.docker.com/r/imtiazmasrur/node-hello-world)
@@ -23,6 +21,7 @@ Nodejs, Docker, Kubernetes, Ubuntu Server
 - To apply secret `kubectl apply -f secret.yaml`
 - To apply secret to specific namespace `kubectl apply -f secret.yaml --namespace=developers-space`
 - Get secret `kubectl get secret -n developers-space`
+- Get secret details `kubectl describe secret node-hello-world`
 
 ### Create Deployment/Pod on Kubernetes
 - To see default namespace (everything) `kubectl get all`
