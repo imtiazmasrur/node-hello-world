@@ -65,7 +65,7 @@ Nodejs, Docker, Kubernetes, Helm, Ubuntu Server
 - To delete service `kubectl delete services node-hello-world`
 
 ### Some Commands on Kubernetes
-- Get the Cluster State `kubectl cluster-info`
+- Get the Cluster State/Information `kubectl cluster-info`
 - Get The Cluster Information `kubectl config view`
 - See all available API resources which are not attached to the namespace `kubectl api-resources --namespaced=false`
 - See all available API resources which are attached to the namespace `kubectl api-resources --namespaced=true`
@@ -75,6 +75,8 @@ Nodejs, Docker, Kubernetes, Helm, Ubuntu Server
 - Delete All Resources from namespace `kubectl delete all --all -n developers-space`
 - To see minikube dashboard `minikube dashboard`
 - To get minikube dashboard `minikube dashboard --url`
+- Delete cluster from list `kubectl config delete-cluster clusterName`
+- Delete context `kubectl config delete-context contextName`
 
 ### kubectx and kubens commands
 - Now we do not want to put `namespace` name each time to run namespace command.
@@ -100,9 +102,14 @@ Nodejs, Docker, Kubernetes, Helm, Ubuntu Server
 - Add line (not this IP wat you will see on your console) `192.168.49.2	nodehelloworld.com` to your host file
 
 ### HELM
+- Check helm version `helm version`
 - Helm hub [artifacthub.io](https://artifacthub.io)
-- To run (Example command) - `helm install <full name override> <chart name>/ --values <chart name>/values.yaml`
-- Run this `helm install node-hello-world node-hello-world-chart/ --values node-hello-world-chart/values.yaml`
+- Go to helm repo path `cd deployments/node-hello-world-chart/`
+- To install (Example command) - `helm install <full name override> <chart name>/ --values <chart name>/values.yaml`
+- Run this `helm install node-hello-world ./ --values values.yaml`
+- Upgrade/Update helm `helm upgrade --install node-hello-world ./`
+- List helm from all namespace `helm list --all-namespaces`
+- List all helm `helm list`
 - Helm uninstall (remove all helm resources) `helm uninstall node-hello-world`
 
 ### References
