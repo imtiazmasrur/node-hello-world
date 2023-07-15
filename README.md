@@ -77,6 +77,7 @@ Nodejs, Docker, Kubernetes, Helm, Ubuntu Server
 - To get minikube dashboard `minikube dashboard --url`
 - Delete cluster from list `kubectl config delete-cluster clusterName`
 - Delete context `kubectl config delete-context contextName`
+- Change context `kubectl config set-context minikube`
 
 ### kubectx and kubens commands
 - Now we do not want to put `namespace` name each time to run namespace command.
