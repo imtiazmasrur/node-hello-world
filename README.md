@@ -104,6 +104,7 @@ Nodejs, Docker, Kubernetes, Helm, Ubuntu Server
 ### HELM
 - Check helm version `helm version`
 - Helm hub [artifacthub.io](https://artifacthub.io)
+- Create helm `helm create node-hello-world-chart`
 - Go to helm repo path `cd deployments/node-hello-world-chart/`
 - To install (Example command) - `helm install <full name override> <chart name>/ --values <chart name>/values.yaml`
 - Run this `helm install node-hello-world ./ --values values.yaml`
