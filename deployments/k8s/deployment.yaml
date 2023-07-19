@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: node-hello-world
-  namespace: developers-space
 spec:
   replicas: 2
   selector:
@@ -45,8 +44,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: node-hello-world
-  namespace: developers-space
+  name: node-hello-world-service
 spec:
   selector:
     app: node-hello-world # This should match with Deployment selector.matchLabels.app (See line 10).

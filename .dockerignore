@@ -1,13 +1,14 @@
-logs/
 *.log
-.git
 *.md
 .cache
+.git
 .env
 
 .DS_Store
 Thumbs.db
 
+.DS_Store
+Thumbs.db
+
 .idea/
-node_modules/
 deployments/

@@ -68,7 +68,7 @@ service:
   nodePort: 30000
 
 ingress:
-  enabled: true
+  enabled: false # make this true to browse http://nodehelloworld.com
   className: ""
   annotations:
     {}

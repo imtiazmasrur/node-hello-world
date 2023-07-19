@@ -109,7 +109,7 @@ Nodejs, Docker, Kubernetes, Helm, Ubuntu Server
 - Go to helm repo path `cd deployments/node-hello-world-chart/`
 - To install (Example command) - `helm install <full name override> <chart name>/ --values <chart name>/values.yaml`
 - Run this `helm install node-hello-world ./ --values values.yaml`
-- Upgrade/Update helm `helm upgrade --install node-hello-world ./`
+- Upgrade/Update helm `helm upgrade --install node-hello-world ./ --values values.yaml`
 - List helm from all namespace `helm list --all-namespaces`
 - List all helm `helm list`
 - Helm uninstall (remove all helm resources) `helm uninstall node-hello-world`
