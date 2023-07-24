@@ -101,6 +101,7 @@ Nodejs, Docker, Kubernetes, Helm, Ubuntu Server
 - You will see IP address of ingress
 - Run `sudo nano /etc/hosts`
 - Add line (not this IP wat you will see on your console) `192.168.49.2	nodehelloworld.com` to your host file
+- Check ingress by yaml file `kubectl get ingress node-server-ingress -o yaml`
 
 ### HELM
 - Check helm version `helm version`
