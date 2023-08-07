@@ -45,6 +45,8 @@ Nodejs, Docker, Kubernetes, Helm, Ubuntu Server
 - Further details of pods (Ex. - details with ip) - `kubectl get pod -o wide -n developers-space`
 - To see the logs/consoles of pod (pod name - `"node-hello-world-6f455d9c5c-758fs"`) `kubectl logs node-hello-world-6f455d9c5c-758fs -n developers-space`
 - Enter pod console (pod name - `"node-hello-world-6f455d9c5c-758fs"`) `kubectl exec -it node-hello-world-6f455d9c5c-758fs -n developers-space sh`
+- See all ENV of pod `kubectl exec node-hello-world-6f455d9c5c-758fs -- env`
+- See DB_USER ENV of pod `kubectl exec node-hello-world-6f455d9c5c-758fs -- env | grep DB_USER`
 
 ### Deployment Debugging Commands on Kubernetes
 - Create deployment from [DockerHub](https://hub.docker.com) (image name - `"nginx"`) `kubectl create deployment nginx-deployment --image=nginx -n developers-space`
